@@ -1,5 +1,6 @@
-
 void listPokemon();
+
+
 
 async function getData() {
 
@@ -12,28 +13,44 @@ async function getData() {
 async function listPokemon() {
     const data = await getData();
     const list = document.getElementById('pokeList');
-     console.log(data);
-     console.log(data[1].types[0].image);
-    const li = document.createElement("li");
-    // li.innerText = data[1].name.fr;
-    for (const type of data[1].types) {
-    
-    }
-    li.innerHTML = "<div><img src='"+data[1].sprites.regular +"' >" +
 
-         "<img src='"+data[1].types[0].image +"' >" +
-        // "<img src='https://raw.githubusercontent.com/Yarkis01/TyraDex/images/types/plante.png' >" +
-        "<p>Fr : "+data[1].name.fr+"</p>" +
-        "<p>En : "+data[1].name.en+"</p>" +
-        "</div>"
-    // console.log(li);
-     document.getElementById('pokeList').append(li);
-    // for (let pokemon of data) {
-    //     const li = document.createElement("li");
-    //     li.innerText = pokemon.name.fr;
-    //     list.append(li);
-    //
-    //     // list.append(li);
-    //
-    // }
+    const batchSize = 50;
+    let index = 1; // skip 0 (souvent invalide)
+
+    function renderBatch() {
+        let html = "";
+
+        const slice = data.slice(index, index + batchSize);
+
+        for (let pokemon of slice) {
+            html += "<div>";
+            html += "<img loading='lazy' src='" + (pokemon.sprites?.regular || "") + "'>";
+
+            for (const type of (pokemon.types || [])) {
+
+                // classe générique 'type-badge' + classe spécifique basée sur le nom du type
+                const typeClass = type.name.toLowerCase();
+
+                html += "<p class='" + typeClass + "'>" +
+                    "<img class='imgType' loading='lazy' src='" + type.image + "'>" +
+                    "<span>" + type.name + "</span>" +
+                    "</p>";
+            }
+
+            html +=
+                "<p>Fr : " + (pokemon.name?.fr || "") + "</p>" +
+                "<p>En : " + (pokemon.name?.en || "") + "</p>";
+            html += "</div>";
+        }
+
+        list.innerHTML += html; // append sans bloquer tout
+
+        index += batchSize;
+
+        if (index < data.length) {
+            requestAnimationFrame(renderBatch); // ✅ fluide
+        }
+    }
+    list.innerHTML = "";
+    renderBatch();
 }

@@ -1,0 +1,66 @@
+#pokeList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+    padding: 20px;
+}
+
+#pokeList div {
+    /*background: #f5f5f5;*/
+    background: #0000AB;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#pokeList div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+#pokeList img {
+    max-width: 100%;
+    height: auto;
+}
+
+#pokeList p {
+    display: inline-flex; /* alignement icône + texte horizontal */
+    align-items: center;
+    gap: 5px; /* espace entre icône et nom */
+    padding: 4px 8px; /* padding à l’intérieur du rectangle */
+    border-radius: 12px; /* arrondi des coins */
+    font-size: 12px; /* taille du texte */
+    font-weight: bold;
+    color: white;
+    margin: 2px; /* espace entre badges */
+}
+
+.imgType {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* Couleurs officielles par type */
+.normal { background-color: #A8A878; }      /* Normal */
+.feu { background-color: #F08030; }         /* Fire */
+.eau { background-color: #6890F0; }        /* Water */
+.électrik { background-color: #F8D030; color: #000; }  /* Electric */
+.plante { background-color: #78C850; }     /* Grass */
+.glace { background-color: #98D8D8; color: #000; }     /* Ice */
+.combat { background-color: #C03028; }     /* Fighting */
+.poison { background-color: #A040A0; }     /* Poison */
+.sol { background-color: #E0C068; color: #000; }       /* Ground */
+.vol { background-color: #A890F0; }        /* Flying */
+.psy { background-color: #F85888; }  /* Psychic */
+.insecte { background-color: #A8B820; color: #000; }  /* Bug */
+.roche { background-color: #B8A038; color: #000; }    /* Rock */
+.spectre { background-color: #705898; }    /* Ghost */
+.dragon { background-color: #7038F8; }     /* Dragon */
+.ténèbres { background-color: #705848; }   /* Dark */
+.acier { background-color: #B8B8D0; color: #000; }   /* Steel */
+.fée { background-color: #EE99AC; color: #000; }      /* Fairy */
