@@ -12,6 +12,7 @@ async function getData() {
 
 async function listPokemon() {
     const data = await getData();
+    console.log(data);
     const list = document.getElementById('pokeList');
 
     const batchSize = 50;
@@ -33,7 +34,7 @@ async function listPokemon() {
 
                 html += "<p class='" + typeClass + "'>" +
                     "<img class='imgType' loading='lazy' src='" + type.image + "'>" +
-                    "<span>" + type.name + "</span>" +
+                    "<span class='type'>" + type.name + "</span>" +
                     "</p>";
             }
 

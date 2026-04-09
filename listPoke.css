@@ -7,11 +7,10 @@
 
 #pokeList div {
     /*background: #f5f5f5;*/
-    background: #0000AB;
+    background: #dad1d1;
     border-radius: 12px;
     padding: 12px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -33,7 +32,7 @@
     border-radius: 12px; /* arrondi des coins */
     font-size: 12px; /* taille du texte */
     font-weight: bold;
-    color: white;
+    color: black;
     margin: 2px; /* espace entre badges */
 }
 
@@ -45,22 +44,26 @@
     margin-right: 5px;
 }
 
+.type{
+    color: white;
+}
+
 /* Couleurs officielles par type */
-.normal { background-color: #A8A878; }      /* Normal */
-.feu { background-color: #F08030; }         /* Fire */
-.eau { background-color: #6890F0; }        /* Water */
-.électrik { background-color: #F8D030; color: #000; }  /* Electric */
-.plante { background-color: #78C850; }     /* Grass */
-.glace { background-color: #98D8D8; color: #000; }     /* Ice */
-.combat { background-color: #C03028; }     /* Fighting */
-.poison { background-color: #A040A0; }     /* Poison */
-.sol { background-color: #E0C068; color: #000; }       /* Ground */
-.vol { background-color: #A890F0; }        /* Flying */
-.psy { background-color: #F85888; }  /* Psychic */
-.insecte { background-color: #A8B820; color: #000; }  /* Bug */
-.roche { background-color: #B8A038; color: #000; }    /* Rock */
-.spectre { background-color: #705898; }    /* Ghost */
-.dragon { background-color: #7038F8; }     /* Dragon */
-.ténèbres { background-color: #705848; }   /* Dark */
-.acier { background-color: #B8B8D0; color: #000; }   /* Steel */
-.fée { background-color: #EE99AC; color: #000; }      /* Fairy */
+.normal { background-color: #9fa19f; }      /* Normal */
+.feu { background-color: #e62727; }         /* Fire */
+.eau { background-color: #297ff0; }        /* Water */
+.électrik { background-color: #fac000; }  /* Electric */
+.plante { background-color: #3ea128; }     /* Grass */
+.glace { background-color: #40d9ff; }     /* Ice */
+.combat { background-color: #ff8000; }     /* Fighting */
+.poison { background-color: #9241cc; }     /* Poison */
+.sol { background-color: #915221; }       /* Ground */
+.vol { background-color: #81baf0; }        /* Flying */
+.psy { background-color: #f04178; }  /* Psychic */
+.insecte { background-color: #91a11a; }  /* Bug */
+.roche { background-color: #b0aa82; }    /* Rock */
+.spectre { background-color: #704170; }    /* Ghost */
+.dragon { background-color: #5162e0; }     /* Dragon */
+.ténèbres { background-color: #4f403e; }   /* Dark */
+.acier { background-color: #5fa0b8; }   /* Steel */
+.fée { background-color: #f071f0; }      /* Fairy */
