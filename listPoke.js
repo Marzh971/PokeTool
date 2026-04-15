@@ -1,20 +1,41 @@
 void listPokemon();
-const SelectT1 = document.getElementById('filterType');
+const selectT1 = document.getElementById('filterType1');
+const selectT2 = document.getElementById('filterType2');
 let allPokemon = [];
+const selectType = document.querySelectorAll('select[id^=filterType]')
 
-SelectT1.addEventListener('change', () => {
-    // document.getElementById('selectTypeD1').disabled = true;
-    const selectedType = SelectT1.value;
+selectType.forEach(s => {
+    s.addEventListener('change', filterType);
+});
 
-    if (selectedType === "all") {
+function filterType() {
+    const type1 = selectT1.value;
+    const type2 = selectT2.value;
+
+    let filtered = allPokemon;
+
+    // aucun filtre
+    if (type1 === "all" && type2 === "all") {
         renderPokemon(allPokemon);
         return;
     }
-    const filtered = allPokemon.filter(pokemon =>
-        pokemon.types?.some(t => t.name === selectedType)
-    );
+
+    // filtre type 1
+    if (type1 !== "all") {
+        filtered = filtered.filter(pokemon =>
+            pokemon.types?.some(t => t.name === type1)
+        );
+    }
+
+    // filtre type 2
+    if (type2 !== "all") {
+        filtered = filtered.filter(pokemon =>
+            pokemon.types?.some(t => t.name === type2)
+        );
+    }
+
     renderPokemon(filtered);
-});
+}
 
 function renderPokemon(pokemons) {
 
@@ -74,49 +95,6 @@ async function listPokemon() {
     console.log(data);
     renderPokemon(allPokemon);
 
-    // const list = document.getElementById('pokeList');
-    //
-    // const batchSize = 50;
-    // let index = 1; // skip 0 (souvent invalide)
-    //
-    // function renderBatch() {
-    //     let html = "";
-    //
-    //     const slice = data.slice(index, index + batchSize);
-    //
-    //     for (let pokemon of slice) {
-    //         html += "<div>";
-    //         html += "<img loading='lazy' src='" + (pokemon.sprites?.regular || "") + "'>";
-    //
-    //         for (const type of (pokemon.types || [])) {
-    //
-    //             // classe générique 'type-badge' + classe spécifique basée sur le nom du type
-    //             const typeClass = type.name.toLowerCase();
-    //
-    //             html += "<p class='" + typeClass + "'>" +
-    //                 "<img class='imgType' loading='lazy' src='" + type.image + "'>" +
-    //                 "<span class='type'>" + type.name + "</span>" +
-    //                 "</p>";
-    //         }
-    //
-    //         html +=
-    //             "<p>Fr : " + (pokemon.name?.fr || "") + "</p>" +
-    //             "<p>En : " + (pokemon.name?.en || "") + "</p>";
-    //         html += "</div>";
-    //     }
-    //
-    //     list.innerHTML += html; // append sans bloquer tout
-    //
-    //     index += batchSize;
-    //
-    //     if (index < data.length) {
-    //         requestAnimationFrame(renderBatch); // ✅ fluide
-    //     }
-    // }
-    //
-    //
-    // list.innerHTML = "";
-    // renderBatch();
 }
 
 async function getAllTypes(){
@@ -126,7 +104,7 @@ async function getAllTypes(){
     }
 }
 
-async function listTypes() {
+async function listTypes(select) {
     const data = await getAllTypes();
     console.log(data);
 
@@ -134,10 +112,11 @@ async function listTypes() {
         const option = document.createElement("option");
         option.value = type.name?.fr;
         option.text = type.name?.fr;
-        SelectT1.append(option);
+        select.append(option);
     }
 }
 
-listTypes();
+listTypes(selectT1);
+listTypes(selectT2);
 
 
