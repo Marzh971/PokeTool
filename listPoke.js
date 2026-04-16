@@ -1,37 +1,41 @@
 void listPokemon();
 const selectT1 = document.getElementById('filterType1');
 const selectT2 = document.getElementById('filterType2');
+const selectGen = document.getElementById('filterType3');
 let allPokemon = [];
 const selectType = document.querySelectorAll('select[id^=filterType]')
 
 selectType.forEach(s => {
-    s.addEventListener('change', filterType);
+    s.addEventListener('change', filter);
 });
 
-function filterType() {
+function filter() {
     const type1 = selectT1.value;
     const type2 = selectT2.value;
+    const gen = selectGen.value;
 
     let filtered = allPokemon;
 
     // aucun filtre
-    if (type1 === "all" && type2 === "all") {
+    if (type1 === "all" && type2 === "all" && gen === "all") {
         renderPokemon(allPokemon);
         return;
     }
-
     // filtre type 1
     if (type1 !== "all") {
         filtered = filtered.filter(pokemon =>
             pokemon.types?.some(t => t.name === type1)
         );
     }
-
     // filtre type 2
     if (type2 !== "all") {
         filtered = filtered.filter(pokemon =>
             pokemon.types?.some(t => t.name === type2)
         );
+    }
+    // filtre gen
+    if (gen !== "all") {
+        filtered = filtered.filter(pokemon => pokemon.generation == gen);
     }
 
     renderPokemon(filtered);
@@ -115,8 +119,21 @@ async function listTypes(select) {
         select.append(option);
     }
 }
+async function getGen(){
+    const data = await getData();
+    let genMax = allPokemon[allPokemon.length - 1].generation;
+    for (let i = genMax; i > 0 ; i--) {
+        const option = document.createElement("option");
+        option.value = genMax-i+1;
+        option.text = genMax-i+1;
+        selectGen.append(option);
+    }
 
+}
+
+//fonction lancé au démarage
 listTypes(selectT1);
 listTypes(selectT2);
+getGen();
 
 
