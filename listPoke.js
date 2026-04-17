@@ -120,7 +120,7 @@ function renderPokemon(pokemons) {
 }
 
 
-async function getData() {
+ async function getData() {
 
     const httpResponse = await fetch("https://tyradex.app/api/v1/pokemon", {method: 'GET'})
     if (httpResponse.status === 200 && httpResponse.ok) {
