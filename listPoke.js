@@ -27,6 +27,7 @@ async function init() {
     await listTypes(selectT1);
     await listTypes(selectT2);
     getGen();
+    console.log(allPokemon[0])
 }
 
 init();
@@ -86,10 +87,11 @@ function renderPokemon(pokemons) {
                     </a>
                 </p>
                 <div class="pokeImg">
-                  <img loading="lazy" src="${pokemon.sprites?.regular || ""}">
+
+                  <img loading="lazy" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.pokedex_id}.png">
                 </div>
             `;
-
+            // <img loading="lazy" src="${pokemon.sprites?.regular || ""}">
             for (const type of (pokemon.types || [])) {
                 const p = document.createElement("p");
                 p.className = type.name.toLowerCase();
