@@ -3,29 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <title>PokeTools</title>
-    <script src="listPoke.js" defer></script>
-    <link rel="stylesheet" href="listPoke.css">
-</head>
-<body>
-<div id="divFilter">
-    <!--type 1-->
-    <label for="filterType1">Type : </label>
-    <select id="filterType1" >
-        <option value="all" id="selectTypeD1">-TOUT</option>
-    </select>
-    <!--type 2-->
-    <label for="filterType2">Type : </label>
-    <select id="filterType2" >
-        <option value="all" id="selectTypeD2">-TOUT</option>
-    </select>
 
-    <!--génération-->
-    <label for="filterType3">Génération : </label>
-    <select id="filterType3" >
-        <option value="all" id="selectGenAll">-TOUT</option>
-    </select>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.12/dist/css/uikit.min.css" />
+
+    <link rel="stylesheet" href="listPoke.css">
+
+    <script src="layout.js" defer></script>
+    <script src="listPoke.js" defer></script>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div id="header"></div>
+
+<!-- FILTRES -->
+<div id="divFilter" class="uk-section uk-section-muted uk-padding-small uk-flex uk-flex-center uk-flex-wrap uk-flex-middle uk-grid-small" uk-grid>
+
+    <div>
+        <label class="uk-text-small uk-text-bold" for="filterName">Nom :</label>
+        <input id="filterName" class="uk-input uk-form-small uk-border-rounded" type="text">
+    </div>
+
+    <div>
+        <label class="uk-text-small uk-text-bold" for="filterType1">Type :</label>
+        <select id="filterType1" class="uk-select uk-form-small uk-border-rounded">
+            <option value="all" id="selectTypeD1">-TOUT</option>
+        </select>
+    </div>
+
+    <div>
+        <label class="uk-text-small uk-text-bold" for="filterType2">Type 2 :</label>
+        <select id="filterType2" class="uk-select uk-form-small uk-border-rounded">
+            <option value="all" id="selectTypeD2">-TOUT</option>
+        </select>
+    </div>
+
+    <div>
+        <label class="uk-text-small uk-text-bold" for="filterType3">Génération :</label>
+        <select id="filterType3" class="uk-select uk-form-small uk-border-rounded">
+            <option value="all" id="selectGenAll">-TOUT</option>
+        </select>
+    </div>
 
 </div>
-<div id="pokeList"> </div>
+
+<!-- LISTE POKÉDEX -->
+<div id="pokeList"
+     class="uk-grid-small uk-child-width-1-2@s uk-child-width-1-6@m uk-child-width-1-8@l uk-grid-match"
+     uk-grid>
+</div>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top"> <span uk-icon="arrow-up"></span></button>
+
+<!-- FOOTER -->
+<div id="footer"></div>
+
+<!-- UIkit JS -->
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.21.12/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.21.12/dist/js/uikit-icons.min.js"></script>
+
 </body>
 </html>
