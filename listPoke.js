@@ -19,6 +19,20 @@ inputName.addEventListener('input', () => {
 
 selects.forEach(s => s.addEventListener('change', filter));
 
+list.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[id^="buttonImg"]');
+    if (!btn) return;
+
+    const imgA = document.getElementById(btn.id + "A");
+    const imgB = document.getElementById(btn.id + "B");
+
+    if (imgA && imgB) {
+        const isHidden = imgB.hidden;
+        imgB.hidden = !isHidden;
+        imgA.hidden = isHidden;
+    }
+});
+
 async function init() {
     const data = await getData();
     allPokemon = data.slice(1);
@@ -27,9 +41,9 @@ async function init() {
     await listTypes(selectT1);
     await listTypes(selectT2);
     getGen();
-    console.log(allPokemon[0])
+    console.log(allPokemon[25])
+    allPokemon[350].types[0].image ="https://raw.githubusercontent.com/Yarkis01/TyraDex/images/types/normal.png"
 }
-
 init();
 
 
@@ -79,16 +93,20 @@ function renderPokemon(pokemons) {
             div.className = "uk-card uk-card-default uk-card-body uk-text-center uk-border-rounded";
 
             div.innerHTML = `
-                <p class="poke-id">
+                <div class="poke-id">
                     <span class="poke-number">${pokemon.pokedex_id}</span>
-
+                    <div class="poke-right">
+                       <button  class="poke-btns" id="buttonImg${pokemon.pokedex_id}"><span uk-icon="refresh"></span></button>
                      <a class="poke-info" href="https://www.pokepedia.fr/${pokemon.name?.fr}" target="_blank">
                         <span uk-icon="info"></span>
                     </a>
-                </p>
+                    </div>
+
+                </div>
                 <div class="pokeImg">
 
-                  <img loading="lazy" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.pokedex_id}.png">
+                  <img id="buttonImg${pokemon.pokedex_id}A" loading="lazy" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.pokedex_id}.png">
+                  <img id="buttonImg${pokemon.pokedex_id}B" loading="lazy" src="${pokemon.sprites?.shiny || ""}" hidden>
                 </div>
             `;
             // <img loading="lazy" src="${pokemon.sprites?.regular || ""}">

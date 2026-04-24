@@ -129,33 +129,48 @@ body {
 
 /* icône UIkit */
 /* icône en haut à droite */
-.poke-info {
-    position: absolute;
-    top: 8px;
-    right: 8px;
+.poke-id {
+    position: relative;
+}
 
-    color: #666;
+.poke-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+.poke-btns,
+.poke-info {
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    text-decoration: none;
+    border-radius: 6px;
+    background: transparent;
+    color: #666;
+
+    border: none; /* enlève le style bouton */
+    cursor: pointer;
+    padding: 0;
 }
 
-/* icône UIkit */
+/* hover identique */
+.poke-btns:hover,
+.poke-info:hover {
+    background: rgba(0,0,0,0.05);
+    color: #000;
+}
+
+.poke-btns svg,
 .poke-info svg {
     width: 16px;
     height: 16px;
     fill: currentColor;
-}
-
-/* effet hover */
-.poke-info:hover {
-    color: #000;
-    background: rgba(0,0,0,0.05);
 }
 
 /* ===== TYPES ===== */
@@ -226,3 +241,26 @@ body {
     transform: scale(1.1);
     background-color: #1E1E1EA8;
 }
+
+/*quiz*/
+.containerLR {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+
+/* Wrapper pour left + right */
+#left, #right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Organisation horizontale */
+#left, #right {
+    width: 50%;
+}
+

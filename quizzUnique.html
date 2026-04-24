@@ -5,9 +5,10 @@
     <title>PokeTools</title>
 
     <!-- UIkit CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.12/dist/css/uikit.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.12/dist/css/uikit.min.css"/>
 
     <link rel="stylesheet" href="listPoke.css">
+    <link rel="stylesheet" href="quiPoke.css">
 
     <script src="layout.js" defer></script>
     <script src="listPoke.js" defer></script>
@@ -20,10 +21,42 @@
 <div id="header"></div>
 
 <!-- CONTENT -->
-<div id="quizzUnique">
+<div class="uk-flex uk-flex-center uk-flex-middle uk-flex-column" style="height: 100vh;">
+
+    <h3>Nom du Pokémon ?</h3>
+
+    <div class="containerLR">
+        <div id="left">
+            <!-- Image -->
+            <img src="" id="pokeImg">
+        </div>
+        <div id="right">
+            <p id="categorie"></p>
+            <p >Point : <span id="point">0</span></p>
+            <!-- Input -->
+            <label for="pokemonName">
+            </label><input type="text"
+                           id="pokemonName"
+                           placeholder="Entrez un nom..."
+                           class="uk-input uk-form-large uk-form-width-large uk-margin-small-bottom">
+
+            <!-- Bouton -->
+            <div>
+                <button class="uk-button uk-button-primary uk-button-large" id="btnValider">
+                    Réponse
+                </button>
+                <button class="uk-button uk-button-primary uk-button-large" id="btnChanger">
+                    Recommencer
+                </button>
+            </div>
+
+            <div id="reponse" class=uk-text-large"></div>
+
+        </div>
+    </div>
+
 
 </div>
-
 
 <!-- FOOTER -->
 <div id="footer"></div>
