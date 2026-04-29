@@ -1,0 +1,33 @@
+#champsName {
+    display: grid;
+    grid-template-columns: repeat(6, 2fr);
+    grid-auto-flow: column;
+    grid-auto-rows: min-content;
+    gap: 10px 20px;
+    grid-template-rows: repeat(200, auto); /* 👈 nombre de lignes */
+}
+
+.poke-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.poke-item label {
+    margin-right: 8px;
+}
+
+.containerLR {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centre horizontalement */
+    padding: 20px;
+}
+
+.top-input {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* centre contenu */
+    gap: 10px;
+    margin-bottom: 20px;
+}
