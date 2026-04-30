@@ -22,6 +22,7 @@ function createQuizz(allPokemon) {
         input.value = '';
         input.name = pokemon.pokedex_id;
         input.id = 'champsName' + pokemon.pokedex_id;
+        input.classList.add('uk-input');
         input.disabled = true;
 
         let wrapper = document.createElement("div");
@@ -58,6 +59,7 @@ function createQuizz(allPokemon) {
 
             const input = document.getElementById(`champsName${pokemon.pokedex_id}`);
             input.value = pokemon.name.fr;
+            inputNameS.value = '';
         }
     });
 
