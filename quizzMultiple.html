@@ -24,9 +24,21 @@
 <div class="uk-flex uk-flex-center uk-flex-middle uk-flex-column" >
 
     <div class="containerLR">
+
+        <div>
+            <label class="uk-text-small uk-text-bold" for="filterType3">Génération :</label>
+            <select id="filterType3" class="uk-select uk-form-small uk-border-rounded">
+                <option value="all" id="selectGenAll">-TOUT</option>
+            </select>
+        </div>
+
         <div class="top-input">
-            <label for="pokeName">Nom :</label>
-            <input type="text" id="pokeName">
+
+            <p>Score : <span id="score"></span></p>
+            <div class="input-group">
+                <label for="pokeName">Nom :</label>
+                <input type="text" id="pokeName">
+            </div>
         </div>
 
         <div id="champsName">

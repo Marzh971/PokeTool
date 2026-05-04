@@ -40,7 +40,8 @@ async function init() {
     renderPokemon(allPokemon);
     await listTypes(selectT1);
     await listTypes(selectT2);
-    getGen();
+    await listTypes(selectT2);
+    await getGen();
     console.log(allPokemon[25])
     allPokemon[350].types[0].image ="https://raw.githubusercontent.com/Yarkis01/TyraDex/images/types/normal.png"
 }
@@ -73,6 +74,7 @@ function filter() {
         return true;
     });
     renderPokemon(filteredPokemon);
+    console.log(filteredPokemon);
 }
 
 

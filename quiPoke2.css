@@ -1,33 +1,63 @@
+.containerLR {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    width: 100%;
+}
+
 #champsName {
+    width: 100%;
+    max-width: 1000px; /* 👈 important */
     display: grid;
-    grid-template-columns: repeat(6, 2fr);
-    grid-auto-flow: column;
-    grid-auto-rows: min-content;
-    gap: 10px 20px;
-    grid-template-rows: repeat(200, auto); /* 👈 nombre de lignes */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px 40px; /* 👈 20px vertical / 40px horizontal */
 }
 
 .poke-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 8px 12px; /* 👈 espace interne */
 }
 
 .poke-item label {
     margin-right: 8px;
 }
 
-.containerLR {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* centre horizontalement */
-    padding: 20px;
-}
 
 .top-input {
     display: flex;
-    align-items: center;
-    justify-content: center; /* centre contenu */
-    gap: 10px;
+    align-items: center;   /* 👈 aligne tout verticalement */
+    justify-content: center;
+    gap: 20px;
     margin-bottom: 20px;
+}
+
+.top-input p {
+    margin: 0;             /* 👈 supprime le décalage du <p> */
+    display: flex;
+    align-items: center;   /* 👈 aligne le texte avec l’input */
+}
+
+.top-input label {
+    margin: 0;
+}
+
+.top-input input {
+    height: 30px;          /* 👈 force une hauteur cohérente */
+}
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.poke-input {
+    background-color: whitesmoke !important;
+    color: #1e1e1e;
+}
+.valid-input {
+    background-color: white !important;
+    color: #1e1e1e;
 }

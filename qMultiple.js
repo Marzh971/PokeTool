@@ -1,19 +1,42 @@
 // let allPokemon = [];
 let nomsFR = [];
+let score = 0;
 const inputNameS = document.getElementById("pokeName");
 init();
+const scoreSpan = document.getElementById("score");
 
 async function init() {
     const data = await getData();
     allPokemon = data.slice(1);
     console.log(allPokemon);
      nomsFR = allPokemon.map(pokemon => pokemon.name.fr.toLocaleLowerCase());
+     await getGen();
+     filterGen();
     createQuizz(allPokemon);
 
 }
 
+function filterGen() {
+    const gen = selectGen.value;
+
+    filteredPokemon = allPokemon.filter(pokemon => {
+
+        if (gen !== "all" && pokemon.generation != gen) {
+            return false;
+        }
+        return true;
+    });
+    console.log(filteredPokemon);
+    createQuizz(filteredPokemon)
+    scoreSpan.innerText = score+'/'+filteredPokemon.length;
+}
+
+selectGen.addEventListener('change', filterGen);
+
 function createQuizz(allPokemon) {
+    score = 0;
     const div = document.getElementById('champsName')
+    div.innerHTML='';
     for (pokemon of allPokemon) {
         let label = document.createElement('label');
         label.innerText = pokemon.pokedex_id;
@@ -23,6 +46,7 @@ function createQuizz(allPokemon) {
         input.name = pokemon.pokedex_id;
         input.id = 'champsName' + pokemon.pokedex_id;
         input.classList.add('uk-input');
+        input.classList.add('poke-input');
         input.disabled = true;
 
         let wrapper = document.createElement("div");
@@ -60,6 +84,11 @@ function createQuizz(allPokemon) {
             const input = document.getElementById(`champsName${pokemon.pokedex_id}`);
             input.value = pokemon.name.fr;
             inputNameS.value = '';
+            input.classList.remove('poke-input');
+            input.classList.add('valid-input');
+            score = score+1;
+            scoreSpan.innerText = score+'/'+filteredPokemon.length;
+
         }
     });
 
