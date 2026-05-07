@@ -60,4 +60,10 @@
 .valid-input {
     background-color: white !important;
     color: #1e1e1e;
+    animation: success 0.4s ease;
+}
+@keyframes success {
+    0% { transform: scale(1); box-shadow: 0 0 0px #2ecc71; }
+    50% { transform: scale(1.1); box-shadow: 0 0 10px #2ecc71; }
+    100% { transform: scale(1); box-shadow: 0 0 0px #2ecc71; }
 }
